@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour
         eventTrigger.OnEventTime += HandleEventTrigger;
         eventTrigger.OnGamePlaying += HandlePlayingTrigger;
         pauseButton.OnClickPause += HandlePauseTrigger;
-        pauseButton.OnPlayningGame += HandlePlayingTrigger;
     }
     
 
@@ -46,6 +45,9 @@ public class GameManager : MonoBehaviour
                 }
                 enemySpawner.StartSpawnCar();
                 player.GetComponent<BoxCollider2D>().isTrigger = false;
+                pauseButton.gameObject.SetActive(true);
+                panelForPause.SetActive(false);
+                score.gameObject.SetActive(true);
                 break;
 
             case GameState.Event:
@@ -60,12 +62,16 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Pause:
                 player.isPossibleToMove = false;
+                pauseButton.OnPlayingGame += HandlePlayingTrigger;
                 enemySpawner.StopSpawnCar();
                 foreach (var item in roads)
                 {
                     item.isEvent = true;
                 }
                 enemySpawner.StopCarSpeed();
+                pauseButton.gameObject.SetActive(false);
+                panelForPause.SetActive(true);
+                score.gameObject.SetActive(false);
                 break;
 
             case GameState.GameOver:
@@ -123,7 +129,7 @@ public class GameManager : MonoBehaviour
         eventTrigger.OnEventTime -= HandleEventTrigger;
         eventTrigger.OnGamePlaying -= HandlePlayingTrigger;
         pauseButton.OnClickPause -= HandlePauseTrigger;
-        pauseButton.OnPlayningGame -= HandlePlayingTrigger;
+        pauseButton.OnPlayingGame -= HandlePlayingTrigger;
         SceneManager.LoadScene("MainScene");
     }
     

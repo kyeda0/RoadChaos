@@ -5,8 +5,7 @@ public class PauseButton : MonoBehaviour
 {
     private int isClick = 1;
     public event Action OnClickPause;
-    public event Action OnPlayningGame;
-
+    public event Action OnPlayingGame;
 
 
 
@@ -15,13 +14,15 @@ public class PauseButton : MonoBehaviour
         if (isClick == 1)
         {
             isClick = 0;
+            Debug.Log(isClick);
             OnClickPause.Invoke();
         }
 
-        else
+        else if(isClick == 0)
         {
             isClick = 1;
-            OnPlayningGame.Invoke();
+            Debug.Log(isClick);
+            OnPlayingGame.Invoke();
         }
     }
 }
