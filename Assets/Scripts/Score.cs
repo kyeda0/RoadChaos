@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,12 @@ public class Score : MonoBehaviour
     public int score;
     private int bestScore;
     [SerializeField] private Text bestScoreText;
+
+    private void Start()
+    {
+        bestScore = PlayerPrefs.GetInt("BestScore");
+    }
+
     public void UpdateScore()
     {
         GetComponent<Text>().text = "Score: " + score;
@@ -13,7 +20,16 @@ public class Score : MonoBehaviour
 
     public void UpdateBestScore()
     {
-        bestScore = score;
-        bestScoreText.GetComponent<Text>().text = "" + bestScore;
+        if (score >= bestScore)
+        {
+            bestScore = score;
+            bestScoreText.GetComponent<Text>().text = "" + bestScore;
+            PlayerPrefs.SetInt("BestScore", bestScore);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            bestScoreText.GetComponent<Text>().text = "" + bestScore;
+        }
     }
 }

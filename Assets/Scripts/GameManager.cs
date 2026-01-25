@@ -11,14 +11,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private EventTrigger eventTrigger;
     [SerializeField] private List<RoadScroller> roads = new List<RoadScroller>();
     [SerializeField] private GameObject panelForDeath;
+    [SerializeField] private GameObject panelForPause;
     [SerializeField] private Score score;
     [SerializeField] private HealthUI healthUI;
+    [SerializeField] private PauseButton pauseButton;
     private GameState currentgameState;
     void Start()
     {
         ChangeGameState(GameState.StartGame);
         eventTrigger.OnEventTime += HandleEventTrigger;
         eventTrigger.OnGamePlaying += HandlePlayingTrigger;
+        pauseButton.OnClickPause += HandlePauseTrigger;
+        pauseButton.OnPlayningGame += HandlePlayingTrigger;
     }
     
 
@@ -54,6 +58,15 @@ public class GameManager : MonoBehaviour
                 player.isPossibleToMove = false;
                 player.GetComponent<BoxCollider2D>().isTrigger = true;
                 break;
+            case GameState.Pause:
+                player.isPossibleToMove = false;
+                enemySpawner.StopSpawnCar();
+                foreach (var item in roads)
+                {
+                    item.isEvent = true;
+                }
+                enemySpawner.StopCarSpeed();
+                break;
 
             case GameState.GameOver:
                 enemySpawner.StopCarSpeed();
@@ -84,6 +97,11 @@ public class GameManager : MonoBehaviour
     {
         ChangeGameState(GameState.GameOver);
     }
+
+    private void HandlePauseTrigger()
+    {
+        ChangeGameState(GameState.Pause);
+    }
     public void ChangeGameState(GameState newGameState)
     {
         currentgameState = newGameState;
@@ -94,7 +112,8 @@ public class GameManager : MonoBehaviour
         StartGame,
         Playing,
         Event,
-        GameOver
+        GameOver,
+        Pause
     }
 
 
@@ -103,6 +122,8 @@ public class GameManager : MonoBehaviour
         player.OnGameOverEvent -= HandleGameOverTrigger;
         eventTrigger.OnEventTime -= HandleEventTrigger;
         eventTrigger.OnGamePlaying -= HandlePlayingTrigger;
+        pauseButton.OnClickPause -= HandlePauseTrigger;
+        pauseButton.OnPlayningGame -= HandlePlayingTrigger;
         SceneManager.LoadScene("MainScene");
     }
     

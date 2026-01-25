@@ -11,7 +11,6 @@ public class SwitchMusicButton : MonoBehaviour
     private void Start()
     {
         checkMark.transform.localScale = new Vector3(0f,0f,1f);
-        isClicked = PlayerPrefs.GetInt("IsClicked");
     }
     public void OnAndOffMusic()
     {
@@ -19,17 +18,13 @@ public class SwitchMusicButton : MonoBehaviour
         {
             checkMark.transform.localScale = new Vector3(1f,1f,1f);
             isClicked = 0;
-            PlayerPrefs.SetInt("IsClicked",isClicked);
-            PlayerPrefs.Save();
-            musicSource.Stop();
+            musicSource.Pause();
         }
         else
         {
             checkMark.transform.localScale = new Vector3(0f,0f,1f);
             isClicked = 1;
-            PlayerPrefs.SetInt("IsClicked",isClicked);
-            PlayerPrefs.Save();
-            musicSource.Play();
+            musicSource.UnPause();
         }
 
     }
