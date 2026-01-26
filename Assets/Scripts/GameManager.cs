@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
         eventTrigger.OnEventTime += HandleEventTrigger;
         eventTrigger.OnGamePlaying += HandlePlayingTrigger;
         pauseButton.OnClickPause += HandlePauseTrigger;
+        pauseButton.OnPlayingGame += HandlePlayingTrigger;
     }
     
 
@@ -47,11 +48,14 @@ public class GameManager : MonoBehaviour
                 player.GetComponent<BoxCollider2D>().isTrigger = false;
                 pauseButton.gameObject.SetActive(true);
                 panelForPause.SetActive(false);
-                score.gameObject.SetActive(true);
+                score.gameObject.SetActive(true);   
+                eventTrigger.enabled = true;
+                pauseButton.gameObject.SetActive(true);
                 break;
 
             case GameState.Event:
                 enemySpawner.StopSpawnCar();
+                enemySpawner.StopCarSpeed();
                 eventTrigger.OnRandomEvent();
                 foreach (var item in roads)
                 {
@@ -59,19 +63,22 @@ public class GameManager : MonoBehaviour
                 }
                 player.isPossibleToMove = false;
                 player.GetComponent<BoxCollider2D>().isTrigger = true;
+                pauseButton.gameObject.SetActive(false);
                 break;
             case GameState.Pause:
                 player.isPossibleToMove = false;
-                pauseButton.OnPlayingGame += HandlePlayingTrigger;
                 enemySpawner.StopSpawnCar();
                 foreach (var item in roads)
                 {
                     item.isEvent = true;
                 }
                 enemySpawner.StopCarSpeed();
+                enemySpawner.StopSpawnCar();
                 pauseButton.gameObject.SetActive(false);
                 panelForPause.SetActive(true);
                 score.gameObject.SetActive(false);
+                eventTrigger.enabled = false;
+                player.GetComponent<BoxCollider2D>().isTrigger = true;
                 break;
 
             case GameState.GameOver:

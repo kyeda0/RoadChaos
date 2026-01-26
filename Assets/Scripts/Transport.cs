@@ -13,7 +13,7 @@ public abstract class Transport : MonoBehaviour
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
-        GetComponent<SpriteRenderer>().sprite = spriteTransport;
+     //   GetComponent<SpriteRenderer>().sprite = spriteTransport;
         currentSpeed = startSpeed;
     }
 

@@ -444,7 +444,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -858,7 +858,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -955,9 +955,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickAudio: {fileID: 8300000, guid: b0c65c25439087e4181199403732dfe6, type: 3}
+  audioForEvent: {fileID: 8300000, guid: 3c6b24737f563cd4fbd19f8c393935f7, type: 3}
   sfxSource: {fileID: 375446905}
   musicSource: {fileID: 375446908}
-  checkMark: {fileID: 1171402787}
+  checkMark: {fileID: 1160723180}
 --- !u!4 &375446907
 Transform:
   m_ObjectHideFlags: 0
@@ -967,7 +968,7 @@ Transform:
   m_GameObject: {fileID: 375446904}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.9530377, y: -1.2363989, z: 1168.5349}
+  m_LocalPosition: {x: 0, y: 0, z: 1168.5349}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1474,7 +1475,7 @@ MonoBehaviour:
   - {fileID: 449078463206933500, guid: c0a4b98c665072342bf2d103b59be387, type: 3}
   - {fileID: 4062925549899814575, guid: 799637c6772a7344dba1f26d0bb3b81f, type: 3}
   - {fileID: 8110004695576615815, guid: 3022c4f7ae1213c4ba33b5b60ea1ef61, type: 3}
-  startTime: 10
+  startTime: 15
   TargetPlayer: {fileID: 0}
   randomEvent: {fileID: 0}
   currentTime: 0
@@ -1520,7 +1521,7 @@ Transform:
   m_GameObject: {fileID: 953913812}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6, y: -7.5, z: 0.020639978}
+  m_LocalPosition: {x: -0.6, y: -9, z: 0.020639978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1703,7 +1704,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 5, y: 0}
+  m_AnchoredPosition: {x: 7, y: 0}
   m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &979797180
@@ -2041,6 +2042,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1160723180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1160723181}
+  m_Layer: 0
+  m_Name: Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1160723181
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160723180}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.25, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1171402787
 GameObject:
   m_ObjectHideFlags: 0
@@ -2070,7 +2102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5f14e7b333e4d4bb769f84527cb78a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCarFactories: []
+  enemyCarFactories:
+  - {fileID: 11400000, guid: 989fe66a1c608e04594a85fe3253b7bf, type: 2}
+  - {fileID: 11400000, guid: 3d48e00a93013dc448f954f20a97b8ed, type: 2}
   carOnRoad: []
   timeForSpawn: 1
   repeatRateForSpawn: 1
@@ -2631,7 +2665,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Your Best Result
+  m_Text: 'Best Score:'
 --- !u!222 &1510149998
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2736,7 +2770,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1583296362}
+      - m_Target: {fileID: 329745400}
         m_TargetAssemblyTypeName: PauseButton, Assembly-CSharp
         m_MethodName: OnAndOffPause
         m_Mode: 1
@@ -3649,3 +3683,4 @@ SceneRoots:
   - {fileID: 938800811}
   - {fileID: 740854185}
   - {fileID: 375446907}
+  - {fileID: 1160723181}

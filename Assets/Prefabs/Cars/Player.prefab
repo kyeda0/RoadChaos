@@ -140,7 +140,6 @@ MonoBehaviour:
   maxLane: 0
   timeForInvincibility: 5
   health: 1
-  maxHealth: 2
   isMoveChange: 0
   isPossibleToMove: 1
   animatorPlayer: {fileID: 2036724015279266377}

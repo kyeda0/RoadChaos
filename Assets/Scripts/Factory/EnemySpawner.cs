@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
     private float lastLaneEnemy;
     private void Start()
     {
-        enemyCarFactories = new List<EnemyCarFactory>(Resources.LoadAll<EnemyCarFactory>("EnemyCarScriptObject"));
+       enemyCarFactories = new List<EnemyCarFactory>(Resources.LoadAll<EnemyCarFactory>("EnemyCarScriptObject"));
     }
 
     public void StartSpawnCar()

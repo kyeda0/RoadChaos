@@ -9,6 +9,7 @@ public class HeavyCar : Events
         base.Activity();
         targetPlayer.smoothSpeed = smoothSpeedForEvent;
         targetPlayer.tiltAmount = tiltAmountForEvent;
+        
     }
 
     public override void OffEvent()

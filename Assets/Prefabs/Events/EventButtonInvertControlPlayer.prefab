@@ -87,7 +87,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 925200998893322537}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -141,8 +141,9 @@ MonoBehaviour:
   saveButton: {fileID: 0}
   targetPlayer: {fileID: 0}
   enemySpawner: {fileID: 0}
-  timeEvent: 20
-  isClicked: 0
+  timeEvent: 17.923706
+  isClicked: 1
+  isNeedTimer: 1
   audioManager: {fileID: 0}
 --- !u!1 &1325957581039465098
 GameObject:

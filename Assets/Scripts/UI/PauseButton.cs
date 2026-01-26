@@ -14,14 +14,12 @@ public class PauseButton : MonoBehaviour
         if (isClick == 1)
         {
             isClick = 0;
-            Debug.Log(isClick);
             OnClickPause.Invoke();
         }
 
         else if(isClick == 0)
         {
             isClick = 1;
-            Debug.Log(isClick);
             OnPlayingGame.Invoke();
         }
     }

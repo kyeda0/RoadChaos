@@ -6,6 +6,7 @@ public class InvertControlPlayer : Events
     {
         base.Activity();
         targetPlayer.isMoveChange = true;
+        
     }
 
     public override void OffEvent()

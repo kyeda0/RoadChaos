@@ -10,7 +10,6 @@ public class EventTrigger : MonoBehaviour
     [SerializeField] private float startTime;
     public Player TargetPlayer;
     public Events randomEvent;
-    private Events saveRandomEvent;
     public event Action OnEventTime;
     public event Action OnGamePlaying; 
 
@@ -53,26 +52,19 @@ public class EventTrigger : MonoBehaviour
             currentTime -= Time.deltaTime;
         }
     }
-
+ 
     public void OnRandomEvent()
     {   
         randomEvent = GetRandomEvent();
-        if(randomEvent = events[0])
+        if(randomEvent.isNeedTimer == true)
         {
-            randomEvent.CreateButton(TargetPlayer);
-            randomEvent.OnEventClick -= CallGameManager;
-            randomEvent.OnEventClick += CallGameManager;
-            lastRandomEvent = randomEvent;
-        }
-        else
-        {
-            randomEvent.CreateButton(TargetPlayer);
-            randomEvent.OnEventClick -= CallGameManager;
-            randomEvent.OnEventClick += CallGameManager;
-            lastRandomEvent = randomEvent;
             imageEventTimer.gameObject.SetActive(true);
         }
 
+        randomEvent.CreateButton(TargetPlayer);
+        randomEvent.OnEventClick -= CallGameManager;
+        randomEvent.OnEventClick += CallGameManager;
+        lastRandomEvent = randomEvent;
     }
 
     private Events GetRandomEvent()

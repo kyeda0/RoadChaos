@@ -11,6 +11,7 @@ public class Score : MonoBehaviour
     private void Start()
     {
         bestScore = PlayerPrefs.GetInt("BestScore");
+        ShowBestScoreForMenu();
     }
 
     public void UpdateScore()
@@ -31,5 +32,10 @@ public class Score : MonoBehaviour
         {
             bestScoreText.GetComponent<Text>().text = "" + bestScore;
         }
+    }
+
+    private void ShowBestScoreForMenu()
+    {
+        bestScoreText.GetComponent<Text>().text = "" + bestScore;
     }
 }

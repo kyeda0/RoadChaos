@@ -10,7 +10,6 @@ public class TrafficBurst : Events
         enemySpawner.repeatRateForSpawn = repeatRateForSpawnForEvent;
         enemySpawner.timeForSpawn = timeForSpawnForEvent;
         base.Activity();
-
     }
 
     public override void OffEvent()

@@ -8,6 +8,7 @@ public class NarrowRoadCenterandRight : Events
         targetPlayer.minLane = 0;
         targetPlayer.maxLane = 1;
         targetPlayer.ClampLane();
+        
     }
 
     public override void OffEvent()

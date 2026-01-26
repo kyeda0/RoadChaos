@@ -25,6 +25,8 @@ public class Player: Transport
         minLane = -1;
         maxLane = 1;
         animatorPlayer.GetComponent<Animator>();
+        boxCollider2D.isTrigger = false;
+
     }
     private void Update()
     {
@@ -77,21 +79,21 @@ public class Player: Transport
         if (Input.GetMouseButtonDown(0) && isPossibleToMove == true )
         {
             Vector3 tochPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if(tochPos.x < transform.position.x && isMoveChange == false)
+            if(tochPos.x < transform.position.x && isMoveChange == false && tochPos.y < 3)
             {
                 ChangeLine(-1);
                
             }
-            else if(tochPos.x > transform.position.x && isMoveChange == false)
+            else if(tochPos.x > transform.position.x && isMoveChange == false && tochPos.y < 3)
             {
                 ChangeLine(1);
             }
-            else if (tochPos.x < transform.position.x && isMoveChange == true)
+            else if (tochPos.x < transform.position.x && isMoveChange == true && tochPos.y < 3)
             {
                 ChangeLine(1);
                
             }
-            else if (tochPos.x > transform.position.x && isMoveChange == true)
+            else if (tochPos.x > transform.position.x && isMoveChange == true && tochPos.y < 3)
             {
                 ChangeLine(-1);
                

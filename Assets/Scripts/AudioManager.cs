@@ -1,47 +1,49 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioClip clickAudio;
+    [SerializeField] private AudioClip audioForEvent;
     public AudioSource sfxSource;
     public AudioSource musicSource;
-    private int isClicked = 1;
+    private bool isClicked ;
     [SerializeField] private GameObject checkMark;
-    private float musicVol;
     private void Start()
     { 
-        musicVol = PlayerPrefs.GetFloat("AudioMusic", musicVol);
-        musicSource.volume = musicVol;
-    }
-
-    private void Update()
-    {
+        isClicked = PlayerPrefs.GetInt("AudioIsClick",1) == 1;
+        OnAndOffMusic();
     }
 
     public void AudioClickUI()
     {
         sfxSource.PlayOneShot(clickAudio);
     }
+
+    public void  ToggleMusic()
+    {
+        isClicked = !isClicked;
+        PlayerPrefs.SetInt("AudioIsClick", isClicked ? 1:0);
+        PlayerPrefs.Save();
+        OnAndOffMusic();
+    }
+
+    public void AudioForEvent()
+    {
+        sfxSource.PlayOneShot(audioForEvent);
+    }
     public void OnAndOffMusic()
     {
-        if(isClicked == 1)
+        checkMark.SetActive(isClicked);
+
+        if(isClicked == false)
         {
-            checkMark.transform.localScale = new Vector3(1f,1f,1f);
-            isClicked = 0;
-            PlayerPrefs.SetFloat("AudioMusic", musicVol = 0);
-            musicSource.volume = musicVol;
-            PlayerPrefs.Save();
-            //  musicSource.Pause();
+            musicSource.UnPause();
         }
-        else if (isClicked == 0)
+        else if (isClicked == true)
         {
-            checkMark.transform.localScale = new Vector3(0f,0f,1f);
-            isClicked = 1;
-            PlayerPrefs.SetFloat("AudioMusic", musicVol = 0.2f);
-            musicSource.volume = musicVol;
-            PlayerPrefs.Save();
-          //  musicSource.UnPause();
+            musicSource.Pause();
         }
     }
 
