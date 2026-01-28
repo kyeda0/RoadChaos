@@ -17,16 +17,13 @@ public class Player: Transport
     public event Action OnGameOverEvent;
     public bool isPossibleToMove = true;
     [SerializeField] private Animator animatorPlayer;
-    private HealthUI healthUI;
-
+    private int countLane = 0;
 
     private void Start()
     {
         minLane = -1;
         maxLane = 1;
         animatorPlayer.GetComponent<Animator>();
-        boxCollider2D.isTrigger = false;
-
     }
     private void Update()
     {
@@ -52,10 +49,15 @@ public class Player: Transport
     {
         currentLane = Mathf.Clamp(currentLane, minLane, maxLane);
     }
-    private void ChangeLine(int direction)
+    private void ChangeLane(int direction)
     {
         currentLane = Mathf.Clamp(currentLane + direction, minLane, maxLane);
         targetRotation = direction * tiltAmount;
+        countLane++;
+        if( GameObject.Find("TutorialManager") != null && countLane == 3)
+        {
+            GameObject.Find("TutorialManager").GetComponent<TutorialManager>().SetStage(TutorialManager.StageTutorial.StageTwo);
+        }
     }
     protected override void Move()
     {
@@ -81,21 +83,21 @@ public class Player: Transport
             Vector3 tochPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if(tochPos.x < transform.position.x && isMoveChange == false && tochPos.y < 3)
             {
-                ChangeLine(-1);
+                ChangeLane(-1);
                
             }
             else if(tochPos.x > transform.position.x && isMoveChange == false && tochPos.y < 3)
             {
-                ChangeLine(1);
+                ChangeLane(1);
             }
             else if (tochPos.x < transform.position.x && isMoveChange == true && tochPos.y < 3)
             {
-                ChangeLine(1);
+                ChangeLane(1);
                
             }
             else if (tochPos.x > transform.position.x && isMoveChange == true && tochPos.y < 3)
             {
-                ChangeLine(-1);
+                ChangeLane(-1);
                
             }
         }

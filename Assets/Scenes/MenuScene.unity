@@ -1157,6 +1157,8 @@ MonoBehaviour:
   enemyCarFactories:
   - {fileID: 11400000, guid: 160624897782403429eb9fdbf20bc039, type: 2}
   - {fileID: 11400000, guid: 48d85734e4653ac4d9edde36fb91898b, type: 2}
+  - {fileID: 11400000, guid: 48d85734e4653ac4d9edde36fb91898b, type: 2}
+  - {fileID: 11400000, guid: 8e706fe6820440f4ba0217a9ffc220c7, type: 2}
   timeForSpawn: 1
   repeatRateForSpawn: 0.5
 --- !u!1 &945981888

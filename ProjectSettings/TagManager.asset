@@ -12,6 +12,7 @@ TagManager:
   - MusicPlayer
   - WallForEvent
   - AudioManager
+  - EnemyCarTutorial
   layers:
   - Default
   - TransparentFX

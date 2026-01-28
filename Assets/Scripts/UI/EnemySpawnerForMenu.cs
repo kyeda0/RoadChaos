@@ -11,6 +11,7 @@ public class EnemySpawnerForMenu : MonoBehaviour
     private float[] randomPosXArray = new float[3]{-2f,0,2f};
     [SerializeField] private float timeForSpawn;
     [SerializeField] private float repeatRateForSpawn;
+    private EnemyCarFactory lastEnemyCar;
     private float lastLaneEnemy;
     private void Start()
     {
@@ -26,10 +27,11 @@ public class EnemySpawnerForMenu : MonoBehaviour
     private void CreateCar()
     {
         float randomPos = GetRandomLane();
-        var factory = enemyCarFactories[Random.Range(0,enemyCarFactories.Count)];
+        var factory = GetRandomCar();
         var transport = factory.Create();
         transport.transform.position = new Vector2(randomPos,transform.position.y);
         lastLaneEnemy = randomPos;
+        lastEnemyCar = factory;
     }
 
 
@@ -42,6 +44,17 @@ public class EnemySpawnerForMenu : MonoBehaviour
         }
         while(lastLaneEnemy == randomPos);
         return randomPos;
+    }
+    private EnemyCarFactory GetRandomCar()
+    {
+        EnemyCarFactory randomCarEnemy;
+        do
+        {
+            randomCarEnemy = enemyCarFactories[Random.Range(0,enemyCarFactories.Count)];
+        }
+        while(lastEnemyCar == randomCarEnemy);
+
+        return randomCarEnemy;
     }
 }
 

@@ -16,7 +16,6 @@ public abstract class Events: MonoBehaviour
     public AudioManager audioManager;
     public event Action OnEventClick;
 
-// добавить Best Score in menu
     private void Start()
     {
         button.transform.localPosition = Vector3.zero;
@@ -42,11 +41,12 @@ public abstract class Events: MonoBehaviour
         isClicked = false;
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         audioManager.musicSource.volume = 0.05f;
-        audioManager.AudioForEvent();
         saveButton.GetComponent<Events>().StartCoroutine(AnimationButton(saveButton.transform,Vector3.zero,Vector3.one,new Color(1f,1f,1f,0f),new Color(1f,1f,1f,1f)));
+        audioManager.AudioForEvent();
+
     }
 
-    public void MoveTheButtons()
+    private void MoveTheButtons()
     {
         saveButton.GetComponent<Events>().StartCoroutine(AnimationButton(saveButton.transform,Vector3.one,Vector3.zero,new Color(1f,1f,1f,1f),new Color(1f,1f,1f,0f)));
         audioManager.musicSource.volume = 0.1f;
@@ -59,7 +59,7 @@ public abstract class Events: MonoBehaviour
 
     }
 
-    public IEnumerator AnimationButton(Transform saveButton,Vector3 startVector,Vector3 endVector,Color startColor, Color endColor)
+    private IEnumerator AnimationButton(Transform saveButton,Vector3 startVector,Vector3 endVector,Color startColor, Color endColor)
     {
         float time = 0;
         float duration = 0.3f;

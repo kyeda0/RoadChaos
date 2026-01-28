@@ -8,12 +8,12 @@ public abstract class Transport : MonoBehaviour
     public float startSpeed;
     public float currentSpeed;
     protected  Rigidbody2D rigidbody2d;
-    protected BoxCollider2D boxCollider2D;
+    public BoxCollider2D boxCollider2D;
     private void Awake()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
-     //   GetComponent<SpriteRenderer>().sprite = spriteTransport;
+        GetComponent<SpriteRenderer>().sprite = spriteTransport;
         currentSpeed = startSpeed;
     }
 
@@ -23,7 +23,7 @@ public abstract class Transport : MonoBehaviour
        rigidbody2d.MovePosition(rigidbody2d.position + (Vector2)position);
     }
    
-    protected virtual  void OnTriggerEnter2D(Collider2D other) 
+    protected virtual void OnTriggerEnter2D(Collider2D other) 
     {
         if (other.CompareTag("Wall"))
         {

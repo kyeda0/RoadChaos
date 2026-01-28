@@ -15,14 +15,26 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Score score;
     [SerializeField] private HealthUI healthUI;
     [SerializeField] private PauseButton pauseButton;
+    [SerializeField] private TutorialManager tutorialManager;
     private GameState currentgameState;
     void Start()
     {
-        ChangeGameState(GameState.StartGame);
+        tutorialManager.countGame = PlayerPrefs.GetInt("IsFirstGame");
+        player = Instantiate(playerOriginal, new Vector3(0f,-4,0f),Quaternion.identity);
+        if(tutorialManager.countGame == 0)
+        {
+            ChangeGameState(GameState.Tutorial);
+        }
+        else if (tutorialManager.countGame == 1)
+        {
+            ChangeGameState(GameState.StartGame);
+        }
         eventTrigger.OnEventTime += HandleEventTrigger;
         eventTrigger.OnGamePlaying += HandlePlayingTrigger;
         pauseButton.OnClickPause += HandlePauseTrigger;
         pauseButton.OnPlayingGame += HandlePlayingTrigger;
+        tutorialManager.OnFinishTutorial += HandleStartTrigger;
+        eventTrigger.TargetPlayer = player;
     }
     
 
@@ -31,10 +43,16 @@ public class GameManager : MonoBehaviour
         switch (currentgameState)
         {
             case GameState.StartGame:
-                player = Instantiate(playerOriginal, new Vector3(0f,-4,0f),Quaternion.identity);
+                enemySpawner.enemyCarFactories = new List<EnemyCarFactory>(Resources.LoadAll<EnemyCarFactory>("EnemyCarScriptObject"));
+                score.gameObject.SetActive(true);
+                pauseButton.gameObject.SetActive(true);
                 player.OnGameOverEvent += HandleGameOverTrigger;
-                eventTrigger.TargetPlayer = player;
+                eventTrigger.currentTime = eventTrigger.startTime;
+                eventTrigger.enabled = true;
+                player.health = 1;
                 healthUI.UpdateHealth();
+                tutorialManager.gameObject.SetActive(false);
+
                 ChangeGameState(GameState.Playing);
                 break;
 
@@ -81,6 +99,12 @@ public class GameManager : MonoBehaviour
                 player.GetComponent<BoxCollider2D>().isTrigger = true;
                 break;
 
+                case GameState.Tutorial:
+                tutorialManager.SetStage(TutorialManager.StageTutorial.StageOne);
+                eventTrigger.enabled = false;
+                player.boxCollider2D.isTrigger = true;
+                break;
+
             case GameState.GameOver:
                 enemySpawner.StopCarSpeed();
                 enemySpawner.StopSpawnCar();
@@ -96,6 +120,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void HandleStartTrigger()
+    {
+        ChangeGameState(GameState.StartGame);
+    }
     private void HandleEventTrigger()
     {
         ChangeGameState(GameState.Event);
@@ -126,7 +154,8 @@ public class GameManager : MonoBehaviour
         Playing,
         Event,
         GameOver,
-        Pause
+        Pause,
+        Tutorial
     }
 
 
@@ -137,6 +166,7 @@ public class GameManager : MonoBehaviour
         eventTrigger.OnGamePlaying -= HandlePlayingTrigger;
         pauseButton.OnClickPause -= HandlePauseTrigger;
         pauseButton.OnPlayingGame -= HandlePlayingTrigger;
+        tutorialManager.OnFinishTutorial -= HandleStartTrigger;
         SceneManager.LoadScene("MainScene");
     }
     

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class HealthUI : MonoBehaviour
 {
     [SerializeField] private GameObject imageHealth;
-    private GameObject saveImageHealth;
+    [SerializeField] private GameObject saveImageHealth;
 
     public void UpdateHealth()
     {
@@ -22,6 +22,6 @@ public class HealthUI : MonoBehaviour
 
     public void DeleteHealth()
     {
-        Destroy(saveImageHealth.gameObject);
+        Destroy(GameObject.Find("ImageHealth(Clone)").gameObject);
     }
 }

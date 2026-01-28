@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class EventTrigger : MonoBehaviour
 {
     [SerializeField] private List<Events> events;
-    [SerializeField] private float startTime;
+    public float startTime;
     public Player TargetPlayer;
     public Events randomEvent;
     public event Action OnEventTime;
@@ -16,12 +16,9 @@ public class EventTrigger : MonoBehaviour
     public float currentTime;
     private Events lastRandomEvent;
     [SerializeField] private Image imageEventTimer;
+    [SerializeField] private Events eventForTutorialAddHealth;
+    [SerializeField] private Events eventForTutorialInvertPlayer;
 
-
-    private void Start()
-    {
-        currentTime = startTime;
-    }
 
     private void Update()
     {
@@ -81,5 +78,18 @@ public class EventTrigger : MonoBehaviour
     private void CallGameManager()
     {
         OnGamePlaying?.Invoke();
+    }
+
+    public void SpawnGoodEventForTutorial()
+    {
+        randomEvent = eventForTutorialAddHealth;
+        randomEvent.CreateButton(TargetPlayer);
+    }
+
+    public void SpawnBadEventForTutorial()
+    {
+        randomEvent = eventForTutorialInvertPlayer;
+        randomEvent.CreateButton(TargetPlayer);
+        imageEventTimer.gameObject.SetActive(true);
     }
 }
