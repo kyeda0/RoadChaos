@@ -1033,6 +1033,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickAudio: {fileID: 8300000, guid: b0c65c25439087e4181199403732dfe6, type: 3}
   audioForEvent: {fileID: 8300000, guid: 804ce6618d5a42c43a9167750573dc9e, type: 3}
+  audioForText: {fileID: 8300000, guid: 20c143152166e4941a1c08dd4bab0503, type: 3}
   sfxSource: {fileID: 375446905}
   musicSource: {fileID: 375446908}
   checkMark: {fileID: 1160723180}
@@ -1428,6 +1429,7 @@ MonoBehaviour:
   healthUI: {fileID: 1268127281}
   pauseButton: {fileID: 329745400}
   tutorialManager: {fileID: 1513637355}
+  audioManager: {fileID: 375446906}
 --- !u!4 &740854185
 Transform:
   m_ObjectHideFlags: 0
@@ -2807,8 +2809,8 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 170
-    m_FontStyle: 0
+    m_FontSize: 165
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 200
@@ -2818,7 +2820,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Best Score:'
+  m_Text: "\u041B\u0443\u0447\u0448\u0438\u0439 \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442:"
 --- !u!222 &1510149998
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2866,6 +2868,7 @@ MonoBehaviour:
   eventTrigger: {fileID: 938800810}
   panelTutorial: {fileID: 1596458673}
   healthUI: {fileID: 1268127281}
+  audioManager: {fileID: 375446906}
   countGame: 0
 --- !u!4 &1513637356
 Transform:
@@ -3257,7 +3260,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: f4c99a340a6e6504aa6e992b7a253612, type: 3}
     m_FontSize: 70
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 70
@@ -3267,7 +3270,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score:'
+  m_Text: "\u0421\u0447\u0435\u0442:"
 --- !u!222 &1680719328
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3467,7 +3470,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: f4c99a340a6e6504aa6e992b7a253612, type: 3}
     m_FontSize: 200
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
@@ -3893,7 +3896,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 40
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 70
@@ -4069,7 +4072,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: f4c99a340a6e6504aa6e992b7a253612, type: 3}
     m_FontSize: 100
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 200
@@ -4079,7 +4082,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PAUSE
+  m_Text: "\u041F\u0410\u0423\u0417\u0410"
 --- !u!222 &2090537211
 CanvasRenderer:
   m_ObjectHideFlags: 0

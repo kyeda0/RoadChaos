@@ -754,8 +754,8 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: f4c99a340a6e6504aa6e992b7a253612, type: 3}
-    m_FontSize: 25
-    m_FontStyle: 0
+    m_FontSize: 20
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 200
@@ -833,8 +833,8 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: f4c99a340a6e6504aa6e992b7a253612, type: 3}
-    m_FontSize: 65
-    m_FontStyle: 0
+    m_FontSize: 45
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
@@ -844,9 +844,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'ROAD CHAOS
-
-'
+  m_Text: "\u0414\u041E\u0420\u041E\u0416\u041D\u042B\u0419 \u0425\u0410\u041E\u0421"
 --- !u!222 &656148318
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1305,6 +1303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickAudio: {fileID: 8300000, guid: b0c65c25439087e4181199403732dfe6, type: 3}
   audioForEvent: {fileID: 0}
+  audioForText: {fileID: 0}
   sfxSource: {fileID: 945981890}
   musicSource: {fileID: 2103724740}
   checkMark: {fileID: 2091353533}
@@ -1638,7 +1637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.11764707, g: 0.11764707, b: 0.11764707, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1647,7 +1646,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: f4c99a340a6e6504aa6e992b7a253612, type: 3}
     m_FontSize: 45
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 45
@@ -1657,7 +1656,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: START
+  m_Text: "\u0418\u0433\u0440\u0430\u0442\u044C"
 --- !u!222 &1863822632
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1946,6 +1945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickAudio: {fileID: 8300000, guid: b0c65c25439087e4181199403732dfe6, type: 3}
   audioForEvent: {fileID: 0}
+  audioForText: {fileID: 0}
   sfxSource: {fileID: 0}
   musicSource: {fileID: 2103724740}
   checkMark: {fileID: 2091353533}
@@ -2106,8 +2106,8 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: f4c99a340a6e6504aa6e992b7a253612, type: 3}
-    m_FontSize: 23
-    m_FontStyle: 0
+    m_FontSize: 20
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 200
@@ -2117,7 +2117,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Best Score: '
+  m_Text: "\u041B\u0443\u0447\u0448\u0438\u0439 \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442: "
 --- !u!222 &2112270595
 CanvasRenderer:
   m_ObjectHideFlags: 0

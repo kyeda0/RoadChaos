@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioClip clickAudio;
     [SerializeField] private AudioClip audioForEvent;
+    [SerializeField] private AudioClip audioForText;
     public AudioSource sfxSource;
     public AudioSource musicSource;
     private bool isClicked ;
@@ -32,6 +33,11 @@ public class AudioManager : MonoBehaviour
     public void AudioForEvent()
     {
         sfxSource.PlayOneShot(audioForEvent);
+    }
+
+    public void AudioForText()
+    {
+        sfxSource.PlayOneShot(audioForText);
     }
     public void OnAndOffMusic()
     {

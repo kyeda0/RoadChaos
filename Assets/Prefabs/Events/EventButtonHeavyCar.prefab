@@ -294,7 +294,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: f4c99a340a6e6504aa6e992b7a253612, type: 3}
     m_FontSize: 60
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 60
@@ -304,7 +304,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HEAVY CAR
+  m_Text: "\u0422\u042F\u0416\u0415\u041B\u042B\u0419 \u0410\u0412\u0422\u041E\u041C\u041E\u0411\u0418\u041B\u042C"
 --- !u!1 &6276847172794261676
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +339,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -210}
+  m_AnchoredPosition: {x: 0, y: -150}
   m_SizeDelta: {x: 500, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7142642386300652519
@@ -373,7 +373,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: f4c99a340a6e6504aa6e992b7a253612, type: 3}
     m_FontSize: 60
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 60
@@ -383,6 +383,5 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'SLOWER STEERING
-
-'
+  m_Text: "\u0411\u041E\u041B\u0415\u0415 \u041C\u0415\u0414\u041B\u0415\u041D\u041D\u041E\u0415
+    \u0420\u0423\u041B\u0415\u0412\u041E\u0415 \u0423\u041F\u0420\u0410\u0412\u041B\u0415\u041D\u0418\u0415"

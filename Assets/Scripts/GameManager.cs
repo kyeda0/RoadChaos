@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private HealthUI healthUI;
     [SerializeField] private PauseButton pauseButton;
     [SerializeField] private TutorialManager tutorialManager;
+    [SerializeField] private AudioManager audioManager;
     private GameState currentgameState;
     void Start()
     {
@@ -52,7 +53,7 @@ public class GameManager : MonoBehaviour
                 player.health = 1;
                 healthUI.UpdateHealth();
                 tutorialManager.gameObject.SetActive(false);
-
+                audioManager.musicSource.volume = 0.1f;
                 ChangeGameState(GameState.Playing);
                 break;
 
@@ -103,6 +104,7 @@ public class GameManager : MonoBehaviour
                 tutorialManager.SetStage(TutorialManager.StageTutorial.StageOne);
                 eventTrigger.enabled = false;
                 player.boxCollider2D.isTrigger = true;
+                audioManager.musicSource.volume = 0.05f;
                 break;
 
             case GameState.GameOver:

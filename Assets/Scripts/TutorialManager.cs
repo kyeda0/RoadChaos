@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +16,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private EventTrigger eventTrigger;
     [SerializeField] private GameObject panelTutorial;
     [SerializeField] private HealthUI healthUI;
+    [SerializeField] private AudioManager audioManager;
     public event Action OnFinishTutorial;
     private Coroutine arrowsCoroutineLeft;
     private Coroutine arrowsCoroutineRight;
@@ -30,7 +31,7 @@ public class TutorialManager : MonoBehaviour
         {
             gameObjects[i].SetActive(true);
         }
-        TextChange("Tap left and right to change lane");
+        TextChange("Тапай слева и справа, чтобы менять полосу");
         arrowsCoroutineRight =  StartCoroutine(AnimationForOneStage(3f,gameObjects[0],new Vector3(0.8f,-2f,0f),new Vector3(1.5f,-2f,0f)));
         arrowsCoroutineLeft = StartCoroutine(AnimationForOneStage(3f,gameObjects[1],new Vector3(-0.8f,-2f,0f),new Vector3(-1.5f,-2f,0f)));
     }
@@ -48,7 +49,7 @@ public class TutorialManager : MonoBehaviour
         {
             gameObjects[i].SetActive(false);
         }
-        TextChange("Dodge the cars");
+        TextChange("Уворачивайся от машин");
         enemySpawner.StartSpawnCarForTutorial();
         wall.SetActive(false);
     }
@@ -65,14 +66,14 @@ public class TutorialManager : MonoBehaviour
     {
         wall.SetActive(true);
         wallForTutorial.SetActive(false);
-        TextChange("Events can help or interfere");
+        TextChange("События могут помочь или помешать");
         textsForTutorial.transform.localPosition = new Vector3(0f,500f,0f);
         eventTrigger.SpawnGoodEventForTutorial();
     }
 
     private void StageFourTutorial()
     {
-        TextChange("Some events are dangerous");
+        TextChange("Некоторые события опасны");
         eventTrigger.SpawnBadEventForTutorial();
         Destroy(GameObject.Find("EventButtonAddHealthPlayer(Clone)"));
         eventTrigger.enabled = true;
@@ -93,7 +94,7 @@ public class TutorialManager : MonoBehaviour
 
     private void StageFiveTutorial()
     {
-        TextChange("Good luck!");
+        TextChange("Удачи!");
         textsForTutorial.transform.localPosition = new Vector3(0f,0f,0f);
         eventTrigger.enabled = false;
         StartStage(StageTutorial.StageSix,5);
@@ -122,6 +123,7 @@ public class TutorialManager : MonoBehaviour
         for (int i = 0; i < text.Length; i++)
         {  
             textsForTutorial.text += text[i];
+            audioManager.AudioForText();
             yield return new WaitForSeconds(0.05f);
         }
     }

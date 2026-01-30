@@ -292,7 +292,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: f4c99a340a6e6504aa6e992b7a253612, type: 3}
     m_FontSize: 60
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 60
@@ -302,7 +302,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: NARROW ROAD
+  m_Text: "\u0421\u0423\u0416\u0415\u041D\u0418\u0415 \u0421\u041F\u0420\u0410\u0412\u0410"
 --- !u!1 &2492509915567246801
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,8 +370,8 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: f4c99a340a6e6504aa6e992b7a253612, type: 3}
-    m_FontSize: 60
-    m_FontStyle: 0
+    m_FontSize: 55
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 60
@@ -381,6 +381,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'ONLY 2 LANES
-
-    CENTER + RIGHT'
+  m_Text: "\u041B\u0415\u0412\u0410\u042F \u041F\u041E\u041B\u041E\u0421\u0410 \u041F\u0415\u0420\u0415\u041A\u0420\u042B\u0422\u0410"
