@@ -17,6 +17,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject panelTutorial;
     [SerializeField] private HealthUI healthUI;
     [SerializeField] private AudioManager audioManager;
+    [SerializeField] private SwitchLanguage switchLanguage;
     public event Action OnFinishTutorial;
     private Coroutine arrowsCoroutineLeft;
     private Coroutine arrowsCoroutineRight;
@@ -26,12 +27,13 @@ public class TutorialManager : MonoBehaviour
 
     private void StageOneTutorial()
     {
+        switchLanguage.isRussuan = PlayerPrefs.GetInt("IsRussian",1) == 1;
         panelTutorial.gameObject.SetActive(true);
         for (int i = 0; i < gameObjects.Length; i++)
         {
             gameObjects[i].SetActive(true);
         }
-        TextChange("Тапай слева и справа, чтобы менять полосу");
+        TextChange("Тапай слева и справа, чтобы менять полосу","Tap left and right to change lane");
         arrowsCoroutineRight =  StartCoroutine(AnimationForOneStage(3f,gameObjects[0],new Vector3(0.8f,-2f,0f),new Vector3(1.5f,-2f,0f)));
         arrowsCoroutineLeft = StartCoroutine(AnimationForOneStage(3f,gameObjects[1],new Vector3(-0.8f,-2f,0f),new Vector3(-1.5f,-2f,0f)));
     }
@@ -49,31 +51,37 @@ public class TutorialManager : MonoBehaviour
         {
             gameObjects[i].SetActive(false);
         }
-        TextChange("Уворачивайся от машин");
+        TextChange("Уворачивайся от машин","Dodge the cars");
         enemySpawner.StartSpawnCarForTutorial();
         wall.SetActive(false);
     }
-    private void TextChange(string text)
+    private void TextChange(string textRussian,string textEngland)
     {
         if(typingCoroutine != null)
         {
             StopCoroutine(typingCoroutine);
         }
-
-        typingCoroutine = StartCoroutine(AnimationForText(text));
+        if(switchLanguage.isRussuan == true)
+        {
+            typingCoroutine = StartCoroutine(AnimationForText(textRussian));
+        }
+        else
+        {
+            typingCoroutine = StartCoroutine(AnimationForText(textEngland));
+        }
     }
     private void StageThreeTutorial()
     {
         wall.SetActive(true);
         wallForTutorial.SetActive(false);
-        TextChange("События могут помочь или помешать");
+        TextChange("События могут помочь или помешать","Events can help or interfere");
         textsForTutorial.transform.localPosition = new Vector3(0f,500f,0f);
         eventTrigger.SpawnGoodEventForTutorial();
     }
 
     private void StageFourTutorial()
     {
-        TextChange("Некоторые события опасны");
+        TextChange("Некоторые события опасны","Some events are dangerous");
         eventTrigger.SpawnBadEventForTutorial();
         Destroy(GameObject.Find("EventButtonAddHealthPlayer(Clone)"));
         eventTrigger.enabled = true;
@@ -94,7 +102,7 @@ public class TutorialManager : MonoBehaviour
 
     private void StageFiveTutorial()
     {
-        TextChange("Удачи!");
+        TextChange("Удачи!","Good luck!");
         textsForTutorial.transform.localPosition = new Vector3(0f,0f,0f);
         eventTrigger.enabled = false;
         StartStage(StageTutorial.StageSix,5);

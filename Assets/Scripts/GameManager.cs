@@ -17,10 +17,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PauseButton pauseButton;
     [SerializeField] private TutorialManager tutorialManager;
     [SerializeField] private AudioManager audioManager;
+    [SerializeField] private GameObject scoreGameObject;
     private GameState currentgameState;
     void Start()
     {
-        tutorialManager.countGame = PlayerPrefs.GetInt("IsFirstGame");
+       // tutorialManager.countGame = PlayerPrefs.GetInt("IsFirstGame");
         player = Instantiate(playerOriginal, new Vector3(0f,-4,0f),Quaternion.identity);
         if(tutorialManager.countGame == 0)
         {
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
             case GameState.StartGame:
                 enemySpawner.enemyCarFactories = new List<EnemyCarFactory>(Resources.LoadAll<EnemyCarFactory>("EnemyCarScriptObject"));
                 score.gameObject.SetActive(true);
+                scoreGameObject.SetActive(true);
                 pauseButton.gameObject.SetActive(true);
                 player.OnGameOverEvent += HandleGameOverTrigger;
                 eventTrigger.currentTime = eventTrigger.startTime;
@@ -104,6 +106,8 @@ public class GameManager : MonoBehaviour
                 tutorialManager.SetStage(TutorialManager.StageTutorial.StageOne);
                 eventTrigger.enabled = false;
                 player.boxCollider2D.isTrigger = true;
+                scoreGameObject.SetActive(false);
+                score.gameObject.SetActive(false);
                 audioManager.musicSource.volume = 0.05f;
                 break;
 

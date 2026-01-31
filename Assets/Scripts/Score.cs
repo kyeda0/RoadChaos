@@ -16,7 +16,7 @@ public class Score : MonoBehaviour
 
     public void UpdateScore()
     {
-        GetComponent<Text>().text = "Счет: " + score;
+        GetComponent<Text>().text = "" + score;
     }
 
     public void UpdateBestScore()

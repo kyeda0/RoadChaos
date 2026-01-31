@@ -45,7 +45,7 @@ public class AudioManager : MonoBehaviour
 
         if(isClicked == false)
         {
-            musicSource.UnPause();
+            musicSource.Play();
         }
         else if (isClicked == true)
         {
